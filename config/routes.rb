@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/teachers/login' => 'sessions#create_teacher'
   get '/teachers/logout' => 'sessions#destroy_teacher'
   
-  get '/' => 'teachers#index'
+  get '/teachers' => 'teachers#index'
   get '/teachers/sign_up' => 'teachers#new'
   post '/teachers' => 'teachers#create'
   get '/teachers/:id' => 'teachers#show'

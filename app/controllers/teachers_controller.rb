@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
 
   def index
-    @current_teacher = current_teacher
+    @teachers = Teacher.all
   end
 
   def new
@@ -34,7 +34,7 @@ class TeachersController < ApplicationController
     
     if @teacher.update(teacher_params)
       flash[:success] = "Successfully updated account"
-      render :index
+      render :show
     else
       flash[:warning] = "Update not successful"
       render :edit

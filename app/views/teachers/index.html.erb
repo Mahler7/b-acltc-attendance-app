@@ -1,11 +1,4 @@
 <h1>Instructor Profile Index</h1>
-<h3><%= @current_teacher.friendly_name %></h3>
-<p><%= @current_teacher.email %></p>
-<p><%= @current_teacher.phone %></p>
-<p><%= @current_teacher.user_type %></p>
-<div>
-  <p>
-    <%= link_to "Edit Profile", "/teachers/#{@current_teacher.id}/edit" %>
-    <%= link_to "Delete Profile", "/teachers/#{@current_teacher.id}", method: :delete, data:{confirm: "Are you sure you want to delete your teacher profile?"} %>
-  </p>
-</div>
+<% @teachers.each do |teacher| %>
+  <h3><%= link_to "#{teacher.friendly_name}", "/teachers/#{teacher.id}" %></h3>
+<% end %>

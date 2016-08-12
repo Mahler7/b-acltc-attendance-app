@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if teacher && teacher.authenticate(params[:password])
       session[:teacher_id] = teacher.id
       flash[:success] = 'Successfully logged in!'
-      redirect_to '/'
+      redirect_to '/teachers'
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/teachers/login'
