@@ -1,0 +1,9 @@
+<h1>Signup!</h1>
+
+<%= form_for @teacher, url: {action: "create"} do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+  
+  <%= f.hidden_field :user_type, value: "teacher" %>
+  <%= submit_tag "Submit" %>
+
+<% end %>

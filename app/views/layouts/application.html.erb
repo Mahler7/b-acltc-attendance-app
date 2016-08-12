@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<% if current_teacher %>
+  Signed in as <%= current_teacher.first_name %> | <%= link_to "Logout", '/teachers/logout' %>
+<% else %>
+  <%= link_to 'Login', '/teachers/login' %> | <%= link_to 'Signup', '/teachers/sign_up' %>
+<% end %>
+
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <%= message %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>

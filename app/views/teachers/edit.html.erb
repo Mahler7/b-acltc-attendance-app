@@ -1,0 +1,8 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @teacher, url: {action: "update"} do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+  
+  <%= f.hidden_field :user_type, value: "teacher" %>
+  <%= submit_tag "Submit" %>
+<% end %>
