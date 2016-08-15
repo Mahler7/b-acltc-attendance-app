@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
 
   def dashboard
-    @teacher = current_teacher
+    @teacher = Teacher.find(params[:id])
   end
 
   def index
