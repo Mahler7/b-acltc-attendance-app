@@ -1,5 +1,9 @@
 class TeachersController < ApplicationController
 
+  def dashboard
+    @teacher = current_teacher
+  end
+
   def index
     @teachers = Teacher.all
   end
