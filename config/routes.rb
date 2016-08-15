@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   get '/cohorts/new' => 'cohorts#new'
   post '/cohorts' => 'cohorts#create'
+  get '/cohorts/:id' => 'cohorts#show'
   get '/cohorts/:id/edit' => 'cohorts#edit'
   patch '/cohorts/:id' => 'cohorts#update'
   delete '/cohorts/:id' => 'cohorts#destroy'

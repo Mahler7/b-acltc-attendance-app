@@ -1,0 +1,8 @@
+<h1>Edit Cohort</h1>
+
+<%= form_for @cohort, url: {action: "update"} do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+
+  <%= f.hidden_field :user_type, value: @teacher.id %>
+  <%= submit_tag "Submit" %>
+<% end %>

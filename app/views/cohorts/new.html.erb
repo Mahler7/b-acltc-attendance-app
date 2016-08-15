@@ -1,20 +1,7 @@
 <h1>New Cohort</h1>
 
 <%= form_for @cohort, url: {action: "create"} do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
-  </div>
+  <%= render partial: "form", locals: {f: f} %>
 
   <%= f.hidden_field :teacher_id, value: @teacher.id %>
   <%= submit_tag "Submit" %>

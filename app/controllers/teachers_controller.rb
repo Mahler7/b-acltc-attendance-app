@@ -4,9 +4,9 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(current_teacher)
   end
 
-  def index
-    @teachers = Teacher.all
-  end
+  # def index
+  #   @teachers = Teacher.all
+  # end
 
   def new
     @teacher = Teacher.new
@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
 
     if @teacher.save
       session[:teacher_id] = @teacher.id
-      flash[:success] = "Successfully created account"
+      flash[:success] = "Successfully created new account"
       redirect_to "/teachers"
     else
       flash[:warning] = "Account Not Created"
@@ -25,9 +25,9 @@ class TeachersController < ApplicationController
     end
   end
 
-  def show
-    @teacher = Teacher.find(params[:id])
-  end
+  # def show
+  #   @teacher = Teacher.find(params[:id])
+  # end
 
   def edit
     @teacher = Teacher.find_by(id: params[:id])
@@ -38,7 +38,7 @@ class TeachersController < ApplicationController
     
     if @teacher.update(teacher_params)
       flash[:success] = "Successfully updated account"
-      render :show
+      render :dashboard
     else
       flash[:warning] = "Update not successful"
       render :edit
