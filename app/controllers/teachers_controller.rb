@@ -1,7 +1,7 @@
 class TeachersController < ApplicationController
 
   def dashboard
-    @teacher = Teacher.find(params[:id])
+    @teacher = Teacher.find(current_teacher)
   end
 
   def index
@@ -18,7 +18,7 @@ class TeachersController < ApplicationController
     if @teacher.save
       session[:teacher_id] = @teacher.id
       flash[:success] = "Successfully created account"
-      render :dashboard
+      redirect_to "/teachers"
     else
       flash[:warning] = "Account Not Created"
       render :new

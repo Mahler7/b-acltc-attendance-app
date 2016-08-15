@@ -3,9 +3,18 @@
 <p><%= @teacher.email %></p>
 <p><%= @teacher.phone %></p>
 <p><%= @teacher.user_type %></p>
+
 <div>
   <p>
     <%= link_to "Edit Profile", "/teachers/#{@teacher.id}/edit" %>
     <%= link_to "Delete Profile", "/teachers/#{@teacher.id}", method: :delete, data:{confirm: "Are you sure you want to delete your teacher profile?"} %>
   </p>
+</div>
+
+<h2>Cohorts</h2>
+<% @teacher.cohorts.each do |cohort| %>
+  <p><%= cohort.name %></p>
+<% end %>
+<div>
+  <p><%= link_to "New Cohort", "/cohorts/new" %></p>
 </div>

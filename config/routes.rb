@@ -12,4 +12,11 @@ Rails.application.routes.draw do
   get '/teachers/:id/edit' => 'teachers#edit'
   patch '/teachers/:id' => 'teachers#update'
   delete '/teachers/:id' => 'teachers#destroy'
+  
+  get '/cohorts/new' => 'cohorts#new'
+  post '/cohorts' => 'cohorts#create'
+  get '/cohorts/:id/edit' => 'cohorts#edit'
+  patch '/cohorts/:id' => 'cohorts#update'
+  delete '/cohorts/:id' => 'cohorts#destroy'
+
 end
