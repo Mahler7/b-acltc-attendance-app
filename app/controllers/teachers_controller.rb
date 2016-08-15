@@ -18,7 +18,7 @@ class TeachersController < ApplicationController
     if @teacher.save
       session[:teacher_id] = @teacher.id
       flash[:success] = "Successfully created account"
-      render :index
+      render :dashboard
     else
       flash[:warning] = "Account Not Created"
       render :new

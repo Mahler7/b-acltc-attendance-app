@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'sessions#new_teacher'
   get '/teachers/login' => 'sessions#new_teacher'
   post '/teachers/login' => 'sessions#create_teacher'
   get '/teachers/logout' => 'sessions#destroy_teacher'
   
-  root 'teachers#dashboard'
-  get '/teachers' => 'teachers#index'
+  get '/teachers' => 'teachers#dashboard'
   get '/teachers/sign_up' => 'teachers#new'
   post '/teachers' => 'teachers#create'
   get '/teachers/:id' => 'teachers#show'
