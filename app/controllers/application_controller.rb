@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
   def authenticate_teacher!
     redirect_to '/teachers/login' unless current_teacher
   end
+
+  def current_student
+    @current_student ||= Student.find_by(id: session[:student_id]) if session[:student_id]
+  end
+  helper_method :current_student
+
+  def authenticate_student!
+    redirect_to '/students/login' unless current_student
+  end
 end

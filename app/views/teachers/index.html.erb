@@ -1,7 +1,0 @@
-<h1>Instructor Profile Index</h1>
-<div>
-  <p><%= link_to "Create New Cohort", "/cohorts/new" %></p>
-  </div>
-<% @teachers.each do |teacher| %>
-  <h3><%= link_to "#{teacher.friendly_name}", "/teachers/#{teacher.id}" %></h3>
-<% end %>

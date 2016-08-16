@@ -1,10 +1,9 @@
-class Teacher < ActiveRecord::Base
+class Student < ActiveRecord::Base
   has_secure_password
-
-  has_many :cohorts
-  has_many :students, through: :cohorts
+  belongs_to :cohort
 
   def friendly_name
     "#{first_name.titleize} #{last_name.titleize}"
   end
+  
 end

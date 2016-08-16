@@ -4,10 +4,6 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(current_teacher)
   end
 
-  # def index
-  #   @teachers = Teacher.all
-  # end
-
   def new
     @teacher = Teacher.new
   end
@@ -24,10 +20,6 @@ class TeachersController < ApplicationController
       render :new
     end
   end
-
-  # def show
-  #   @teacher = Teacher.find(params[:id])
-  # end
 
   def edit
     @teacher = Teacher.find_by(id: params[:id])
