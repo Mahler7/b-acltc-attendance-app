@@ -1,9 +1,8 @@
-<h1>Student Signup!</h1>
+<h1>Edit Profile</h1>
 
-<%= form_for @student, url: {action: "create"} do |f| %>
+<%= form_for @student, url: {action: "update"} do |f| %>
   <%= render partial: "form", locals: {f: f} %>
 
   <%= f.hidden_field :user_type, value: "student" %>
   <%= submit_tag "Submit" %>
-
 <% end %>

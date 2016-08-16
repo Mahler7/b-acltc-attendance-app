@@ -21,6 +21,22 @@ class StudentsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @student = Student.find_by(id: params[:id])
+  end
+
+  def update
+    @student = Student.find_by(id: params[:id])
+
+    if @student.update(student_params)
+      flash[:success] = "Successfully updated account"
+      render :dashboard
+    else
+      flash[:warning] = "Update not successful"
+      render :edit
+    end
+  end
   
   private
 

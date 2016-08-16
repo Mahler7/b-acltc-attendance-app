@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/teachers' => 'teachers#dashboard'
   get '/teachers/sign_up' => 'teachers#new'
   post '/teachers' => 'teachers#create'
-  get '/teachers/:id' => 'teachers#show'
   get '/teachers/:id/edit' => 'teachers#edit'
   patch '/teachers/:id' => 'teachers#update'
   delete '/teachers/:id' => 'teachers#destroy'
@@ -19,6 +18,9 @@ Rails.application.routes.draw do
   get '/students' => 'students#dashboard'
   get '/students/sign_up' => 'students#new'
   post '/students' => 'students#create'
+  get '/students/:id/edit' => 'students#edit'
+  patch '/students/:id' => 'students#update'
+  delete '/students/:id' => 'students#destroy'
   
   get '/cohorts/new' => 'cohorts#new'
   post '/cohorts' => 'cohorts#create'

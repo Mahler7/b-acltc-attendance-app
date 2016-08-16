@@ -3,3 +3,7 @@
 <p><%= @student.email %></p>
 <p><%= @student.phone %></p>
 <p><%= @student.user_type %></p>
+
+<div>
+  <p><%= link_to "Edit Profile", "/students/#{@student.id}/edit" %></p>
+</div>
