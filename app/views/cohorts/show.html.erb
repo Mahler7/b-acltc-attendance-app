@@ -6,3 +6,21 @@
   <p><%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %></p>
   <p><%= link_to "Delete Cohort", "/cohorts/#{@cohort.id}", method: :delete, data:{confirm: "Are you sure you want to delete this cohort?"} %></p>
 </div>
+
+<h2>Lectures</h2>
+<% @cohort.lectures.each do |lecture| %>
+  <p>
+    <%= link_to lecture.name, "/lectures/#{lecture.id}" %>&nbsp;
+    <%= link_to "Edit Lecture", "/lectures/#{lecture.id}/edit" %>&nbsp;
+    <%= link_to "Delete Lecture", "/lectures/#{lecture.id}", method: :delete, data:{confirm: "Are you sure you want to delete this lecture?"} %>
+  </p>
+<% end %>
+
+<h2>Students</h2>
+<% @cohort.students.each do |student| %>
+  <p>
+    <%= link_to student.friendly_name, "/students/#{student.id}" %>&nbsp;
+    <%= link_to "Edit Student", "/students/#{student.id}/edit" %>&nbsp;
+    <%= link_to "Delete Student", "/students/#{student.id}", method: :delete, data:{confirm: "Are you sure you want to delete this student?"} %>
+  </p>
+<% end %>

@@ -37,6 +37,14 @@ class StudentsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @student = Student.find_by(id: params[:id])
+    cohort_id = @student.cohort_id
+    @student.destroy
+    flash[:success] = "This student has been deleted"
+    redirect_to "/cohorts/#{cohort_id}"
+  end
   
   private
 

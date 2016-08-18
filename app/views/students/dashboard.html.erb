@@ -7,3 +7,10 @@
 <div>
   <p><%= link_to "Edit Profile", "/students/#{@student.id}/edit" %></p>
 </div>
+
+<h2>Lectures</h2>
+<% @student.cohort.lectures.each do |lecture| %>
+  <p>
+    <%= link_to lecture.name, "/lectures/#{lecture.id}" %>
+  </p>
+<% end %>

@@ -9,7 +9,7 @@ class LecturesController < ApplicationController
 
     if @lecture.save
       flash[:success] = "Successfully created new lecture"
-      redirect_to "/lectures/#{@lecture.id}"
+      redirect_to "/cohorts/#{@lecture.cohort_id}"
     else
       flash[:warning] = "Lecture Not Created"
       render :new
@@ -29,7 +29,7 @@ class LecturesController < ApplicationController
 
     if @lecture.update(lecture_params)
       flash[:success] = "Successfully updated lecture"
-      render :show
+      redirect_to "/cohorts/#{@lecture.cohort_id}"
     else
       flash[:warning] = "Lecture Not Updated"
       render :edit
@@ -38,9 +38,10 @@ class LecturesController < ApplicationController
 
   def destroy
     @lecture = Lecture.find_by(id: params[:id])
+    cohort_id = @lecture.cohort_id
     @lecture.destroy
     flash[:success] = "Your lecture has been deleted"
-    redirect_to '/teachers'
+    redirect_to "/cohorts/#{cohort_id}"
   end
 
   private
