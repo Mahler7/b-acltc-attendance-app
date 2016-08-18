@@ -29,4 +29,11 @@ Rails.application.routes.draw do
   patch '/cohorts/:id' => 'cohorts#update'
   delete '/cohorts/:id' => 'cohorts#destroy'
 
+  get '/lectures/new' => 'lectures#new'
+  post '/lectures' => 'lectures#create'
+  get '/lectures/:id' => 'lectures#show'
+  get '/lectures/:id/edit' => 'lectures#edit'
+  patch '/lectures/:id' => 'lectures#update'
+  delete '/lectures/:id' => 'lectures#destroy'
+
 end

@@ -1,0 +1,7 @@
+<h1>Create New Lecture</h1>
+
+<%= form_for @lecture, url: {action: "create"} do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+
+  <%= submit_tag "Submit" %>
+<% end %>

@@ -1,0 +1,24 @@
+<div>
+  <%= f.label :cohort_name %>
+  <%= f.collection_select :cohort_id, Cohort.all, :id, :name, prompt: true %>
+</div>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :start_time %>
+  <%= f.datetime_local_field :start_time %>
+</div>
+
+<div>
+  <%= f.label :end_time %>
+  <%= f.datetime_local_field :end_time %>
+</div>
+
+<div>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+</div>
