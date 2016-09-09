@@ -14,3 +14,11 @@
     <%= link_to lecture.name, "/lectures/#{lecture.id}" %>
   </p>
 <% end %>
+
+<h2>Lectures 2</h2>
+<% current_student.attendances.each do |attendance| %>
+  <p><%= attendance.attended %></p>
+  <p><%= attendance.arrived %></p>
+  <p><%= attendance.lecture.name %></p>
+
+<% end %>

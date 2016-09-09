@@ -16,8 +16,30 @@ class LecturesController < ApplicationController
     end
   end
 
+  def new_attendance
+
+  end
+
+  def create_attendance
+    @attendance = Attendance.new(attendance_params)
+    @lecture = @attendance.lecture
+
+    respond_to do |format|
+      if @attendance.save
+        format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }
+        format.json { render :show, status: :created, location: @attendance }
+        format.js
+      else
+        format.html { render :new }
+        format.json { render json: @attendance.errors, status: :unprocessable_entity }
+        format.js
+      end
+    end
+  end
+
   def show
     @lecture = Lecture.find_by(id: params[:id])
+    @attendance = Attendance.new
   end
 
   def edit
@@ -52,7 +74,16 @@ class LecturesController < ApplicationController
         :start_time,
         :end_time,
         :notes,
-        :cohort_id
+        :cohort_id,
+      )
+    end
+
+    def attendance_params
+      params.require(:attendance).permit(
+        :arrived,
+        :attended,
+        :lecture_id,
+        :student_id
       )
     end
 end

@@ -1,0 +1,7 @@
+<div id="attendance_<%= @attendance.id %>">
+  <div class="lectures-attended-students"> 
+    <% @lecture.attended_students.each do |student| %>
+      <p><%= student.friendly_name %></p>
+    <% end %>
+  </div>
+</div>
