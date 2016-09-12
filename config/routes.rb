@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
   root 'sessions#new_teacher'
+  namespace :api do
+    namespace :v1 do
+      get '/lectures' => 'lectures#index'
+      get '/lectures/:id' => 'lectures#show'
+      
+      get '/attendances' => 'attendances#index'
+      post '/attendances' => 'attendances#create'
+      get '/attendances/:id' => 'attendances#show'
+    end
+  end
   get '/teachers/login' => 'sessions#new_teacher'
   post '/teachers/login' => 'sessions#create_teacher'
   get '/teachers/logout' => 'sessions#destroy_teacher'

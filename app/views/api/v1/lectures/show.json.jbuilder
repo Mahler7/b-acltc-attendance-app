@@ -1,0 +1,1 @@
+json.partial! @lecture, partial: "lecture", as: :lecture

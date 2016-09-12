@@ -1,0 +1,1 @@
+json.partial! @attendance, partial: "attendance", as: :attendance
