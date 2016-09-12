@@ -8,9 +8,12 @@ class Api::V1::AttendancesController < ApplicationController
     @attendance = @lecture.attendances.new(attendance_params)
     # student_find = @attendance.find(params[:student_id])
     # @attended_student = Student.find_by(id: params[student_find])
-    
-
-
+    if @attendance.save
+      flash[:success] = "Attendance saved"
+      render :show
+    else
+      render json: {message: "Attendance not saved"}
+    end
   end
 
 
