@@ -52,7 +52,8 @@ class CohortsController < ApplicationController
         :name,
         :start_date,
         :end_date,
-        :teacher_id
+        :teacher_id,
+        :timezone
       )
     end
 end

@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+  around_action :set_timezone, only: [:show]
   def new
     @lecture = Lecture.new
     @cohort = Cohort.find_by(id: params[:id])
@@ -55,5 +56,15 @@ class LecturesController < ApplicationController
         :notes,
         :cohort_id
       )
+    end
+
+
+    def set_timezone
+      @lecture = Lecture.find_by(id: params[:id])
+      old_timezone = Time.zone
+      Time.zone = @lecture.cohort.timezone 
+      yield
+    ensure
+      Time.zone = old_timezone
     end
 end
