@@ -1,7 +1,6 @@
 class AttendancesController < ApplicationController
 
   def new
-
   end
 
   def create

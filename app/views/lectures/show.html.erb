@@ -1,7 +1,39 @@
+<div id="attendances">
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Attended</th>
+        <th>Lecture ID</th>
+        <th>Student ID</th>
+        <th>Student Arrived</th>
+        <th>Attendance Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="attendance in attendances" v-show="attendance.attended" >
+
+        <td>{{ attendance.student_name }}</td>
+        <td>{{ attendance.attended }}</td>
+        <td>{{ attendance.lecture_id }}</td>
+        <td>{{ attendance.student_id }}</td>
+        <td>{{ attendance.display_time }}</td>
+        <td>{{ attendance.lecture_attendance }}</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" v-model="attendance.attended"></td>
+        <td><input v-model="attendance.lecture_id" value="<%= @lecture.id %>"></td>
+        <td><input v-model="attendance.student_id" value="<%= current_student.id %>"></td>
+        <td><button @click="addAttendance">Attended</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <h1>Lecture Profile</h1>
 <h3><%= @lecture.name %></h3>
-<p>Start Time: <%= @lecture.start_time %></p>
-<p>End Time: <%= @lecture.end_time %></p>
+<p>Start Time: <%= @lecture.friendly_start_time %></p>
+<p>End Time: <%= @lecture.friendly_end_time %></p>
 <p>Notes: <%= @lecture.notes %></p>
 <div>
   <p><%= link_to "Edit Lecture", "/lectures/#{@lecture.id}/edit" %></p>

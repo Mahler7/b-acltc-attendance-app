@@ -1,23 +1,21 @@
 class Api::V1::AttendancesController < ApplicationController
   def index
-    @attendances = Attendance.all
+    @lecture = Lecture.find_by(id: params[:lecture_id])
+    @attendances = @lecture.attendances
   end
 
   def create
-    @lecture = Lecture.find(params[:lecture_id])
-    @attendance = @lecture.attendances.new(attendance_params)
-    # student_find = @attendance.find(params[:student_id])
-    # @attended_student = Student.find_by(id: params[student_find])
+    @lecture = Lecture.find_by(id: params[:lecture_id])
+    @attendance = Attendance.new(attendance_params)
     if @attendance.save
-      flash[:success] = "Attendance saved"
       render :show
     else
-      render json: {message: "Attendance not saved"}
+      render json: {errors: @attendance.errors.messages}, status: 422 
     end
   end
 
-
   def show
+    @lecture = Lecture.find_by(id: params[:lecture_id])
     @attendance = Attendance.find_by(id: params[:id])
   end
 
@@ -25,7 +23,6 @@ class Api::V1::AttendancesController < ApplicationController
 
     def attendance_params
       params.require(:attendance).permit(
-        :arrived,
         :attended,
         :lecture_id,
         :student_id

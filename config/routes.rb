@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       get '/lectures' => 'lectures#index'
       get '/lectures/:id' => 'lectures#show'
       
-      get '/attendances' => 'attendances#index'
-      post '/attendances' => 'attendances#create'
-      get '/attendances/:id' => 'attendances#show'
+      get '/lectures/:lecture_id/attendances' => 'attendances#index'
+      post '/lectures/:lecture_id/attendances' => 'attendances#create'
+      get '/lectures/:lecture_id/attendances/:id' => 'attendances#show'
     end
   end
   get '/teachers/login' => 'sessions#new_teacher'
