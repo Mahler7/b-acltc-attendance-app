@@ -1,8 +1,9 @@
-<h1>Edit Profile</h1>
+<h1>Edit Teacher Profile</h1>
 
 <%= form_for @teacher, url: {action: "update"} do |f| %>
   <%= render partial: "form", locals: {f: f} %>
   
   <%= f.hidden_field :user_type, value: "teacher" %>
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Submit", class: "btn btn-default" %>
+  <button type="button" class="btn btn-default"><%= link_to "Back", "/teachers" %></button>
 <% end %>

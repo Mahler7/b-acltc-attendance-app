@@ -2,7 +2,6 @@ class LecturesController < ApplicationController
   around_action :set_timezone, only: [:show]
   def new
     @lecture = Lecture.new
-    @cohort = Cohort.find_by(id: params[:id])
   end
 
   def create
@@ -20,6 +19,7 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find_by(id: params[:id])
     gon.lecture_id = @lecture.id
+    @cohort_id = @lecture.cohort_id
   end
 
   def edit

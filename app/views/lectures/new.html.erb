@@ -3,5 +3,6 @@
 <%= form_for @lecture, url: {action: "create"} do |f| %>
   <%= render partial: "form", locals: {f: f} %>
 
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Submit", class: "btn btn-default" %>
+  <button type="button" class="btn btn-default"><%= link_to "Back", url_for(:back) %></button>
 <% end %>

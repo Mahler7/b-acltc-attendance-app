@@ -5,5 +5,6 @@ class Api::V1::LecturesController < ApplicationController
 
   def show
     @lecture = Lecture.find_by(id: params[:id])
+    @current_student = current_student.id
   end
 end
