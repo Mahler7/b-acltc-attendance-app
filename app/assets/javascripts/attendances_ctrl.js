@@ -34,11 +34,12 @@ var attendances = new Vue({
           that.errors = {}
           that.attendance = {}
           that.attendances.push(res);
+          $('.attendances-checkbox').hide();
         },
         error: function(res) {
           that.errors = res.responseJSON.errors
         }
       })
-    }
+    },
   }
 });

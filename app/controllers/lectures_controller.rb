@@ -20,6 +20,7 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find_by(id: params[:id])
     gon.lecture_id = @lecture.id
+    @current_student_id = current_student.id
   end
 
   def edit

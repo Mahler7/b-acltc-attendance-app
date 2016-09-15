@@ -19,12 +19,14 @@
         <td>{{ attendance.display_time }}</td>
         <td>{{ attendance.lecture_attendance }}</td>
       </tr>
-      <tr>
-        <td><input type="checkbox" v-model="attendance.attended"></td>
-        <td><input v-model="attendance.lecture_id" value="<%= @lecture.id %>"></td>
-        <td><input v-model="attendance.student_id" value="<%= current_student.id %>"></td>
-        <td><button @click="addAttendance">Attended</button></td>
-      </tr>
+      <% unless @lecture.students.include?(current_student)%>
+        <tr class="attendances-checkbox">
+          <td><input type="checkbox" v-model="attendance.attended"></td>
+          <td><input type="hidden" v-model="attendance.lecture_id" value="<%= @lecture.id %>"></td>
+          <td><input type="hidden" v-model="attendance.student_id" value="<%= @current_student_id %>"></td>
+          <td><button v-on:click="addAttendance">Attended</button></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
