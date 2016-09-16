@@ -3,7 +3,7 @@
 <%= form_for @cohort, url: {action: "create"} do |f| %>
   <%= render partial: "form", locals: {f: f} %>
 
-  <%= f.hidden_field :teacher_id, value: @teacher.id %>
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Submit", class: "btn btn-default" %>
+  <button type="button" class="btn btn-default"><%= link_to "Back", "/teachers" %></button>
 
 <% end %>

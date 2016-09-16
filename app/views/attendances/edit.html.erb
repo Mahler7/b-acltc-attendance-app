@@ -1,1 +1,5 @@
-<%= render "form" %>
+<%= form_for @attendance, url: {action: "update"} do |f| %>
+  <%= render partial: "form", locals: {f: f} %>
+
+  <%= submit_tag "Submit" %>
+<% end %>

@@ -46,7 +46,9 @@ class AttendancesController < ApplicationController
         :arrived,
         :attended,
         :lecture_id,
-        :student_id
+        :student_id,
+        :created_at,
+        :display_time
       )
     end
 

@@ -1,20 +1,17 @@
-<%= form_for @attendance, url: {action: "update"} do |f| %>
-  <div>
-    <%= f.label :student_id, "Student" %>
-    <%= f.collection_select :student_id, Student.all, :id, :friendly_name %>
-  </div>
-  <div>
-    <%= f.label :lecture_id, "Lecture" %>
-    <%= f.collection_select :lecture_id, Lecture.all, :id, :name %>
-  </div>
-  <div>
-    <%= f.label :created_at, "Arrived" %>
-    <%= f.datetime_local_field  :created_at %>
-  </div>
-  <div>
-    <%= f.label :attended, "Attended" %>
-    <%= f.check_box :attended %>
-  </div>
-  
-  <%= submit_tag "Submit" %>
-<% end %>
+<div>
+  <%= f.label :student_id, "Student" %>
+  <%= f.collection_select :student_id, Student.all, :id, :friendly_name %>
+</div>
+<div>
+  <%= f.label :lecture_id, "Lecture" %>
+  <%= f.collection_select :lecture_id, Lecture.all, :id, :name %>
+</div>
+<div>
+  <%= f.label :display_time, "Arrived" %>
+  <%= f.datetime_local_field  :created_at %>
+</div>
+<div>
+  <%= f.label :attended, "Attended" %>
+  <%= f.check_box :attended %>
+</div>
+

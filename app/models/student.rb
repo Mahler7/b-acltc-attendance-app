@@ -4,6 +4,8 @@ class Student < ActiveRecord::Base
   has_many :attendances
   has_many :lectures, through: :attendances
 
+  validates :email, uniqueness: true
+
   def friendly_name
     "#{first_name.titleize} #{last_name.titleize}"
   end

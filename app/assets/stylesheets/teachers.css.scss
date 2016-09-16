@@ -1,0 +1,19 @@
+// Place all the styles related to the teachers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "color";
+
+.btn-default {
+  a:link { 
+    color: $black;
+  }
+  a:visited { 
+    color: $black;
+  }
+  a:hover { 
+    color: $acltc-dark-blue;
+  }
+  a:active { 
+    color: $acltc-active-blue;
+  }
+}

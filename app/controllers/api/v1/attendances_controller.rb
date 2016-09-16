@@ -25,7 +25,9 @@ class Api::V1::AttendancesController < ApplicationController
       params.require(:attendance).permit(
         :attended,
         :lecture_id,
-        :student_id
+        :student_id,
+        :display_time,
+        :created_at
       )
     end
 end
