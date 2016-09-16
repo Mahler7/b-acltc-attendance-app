@@ -3,23 +3,19 @@
     <thead>
       <tr>
         <th>Student Name</th>
-        <th>Attended</th>
-        <th>Lecture ID</th>
-        <th>Student ID</th>
         <th>Student Arrived</th>
         <th>Attendance Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="attendance in attendances" v-show="attendance.attended" >
         <td>{{ attendance.student_name }}</td>
-        <td>{{ attendance.attended }}</td>
-        <td>{{ attendance.lecture_id }}</td>
-        <td>{{ attendance.student_id }}</td>
         <td>{{ attendance.display_time }}</td>
         <td>{{ attendance.lecture_attendance }}</td>
+        <td><%= link_to "Edit", "/attendances/{{attendance.id}}/edit" %></td>
       </tr>
-      <% unless @lecture.students.include?(current_student)%>
+      <% unless @lecture.students.include?(current_student) || current_teacher %>
         <tr class="attendances-checkbox">
           <td><input type="checkbox" v-model="attendance.attended"></td>
           <td><input type="hidden" v-model="attendance.lecture_id" value="<%= @lecture.id %>"></td>
