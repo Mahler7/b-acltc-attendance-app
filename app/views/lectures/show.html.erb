@@ -29,7 +29,10 @@
         <td>{{ attendance.student_name }}</td>
         <td>{{ attendance.display_time }}</td>
         <td>{{ attendance.lecture_attendance }}</td>
-        <td><%= link_to "Edit", "/lectures/{{ attendance.lecture_id }}/attendances/{{attendance.id}}/edit" %></td>
+        <% if current_teacher %>
+          <td><button type="button" class="btn btn-default btn-xs"><%= link_to "Edit", "/lectures/{{ attendance.lecture_id }}/attendances/{{attendance.id}}/edit" %></button></td>
+          <td><button type="button" class="btn btn-default btn-xs" v-on:click="deleteAttendance"><%= link_to "Delete", "/api/v1/lectures/{{ attendance.lecture_id }}/attendances/{{attendance.id}}" %></button></td>
+        <% end %>
       </tr>
       <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
       <% unless @lecture.students.include?(current_student) || current_teacher %>

@@ -39,5 +39,15 @@ var attendances = new Vue({
         }
       })
     },
+    deleteAttendance: function() {
+      var that = this;
+      $.ajax({
+        method: 'DELETE',
+        url:'/api/v1/lectures/' + that.lecture_id + '/attendances/' + that.attendance_id + '.json',
+        success: function(res) {
+          that.$remove()
+        }
+      })
+    }
   }
 });

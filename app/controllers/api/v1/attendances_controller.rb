@@ -21,6 +21,12 @@ class Api::V1::AttendancesController < ApplicationController
     @attendance = Attendance.find_by(id: params[:id])
   end
 
+  def destroy
+    @attendance = Attendance.find(params[:attendance_id])
+    @attendance.destroy
+    render json: { message: "Attendance deleted" }
+  end
+
   private
 
     def attendance_params
