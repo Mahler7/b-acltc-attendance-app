@@ -1,25 +1,22 @@
 class AttendancesController < ApplicationController
 
-  def new
+  around_action :set_timezone, only: [:show, :edit, :update]
 
+  def new
+    @attendance = Attendance.new
   end
 
   def create
-    @lecture = Lecture.find(params[:lecture_id])
-    @attendance = @lecture.attendances.new(attendance_params) unless @attendance
+    @attendance = Attendance.new(attendance_params) unless @attendance
+    @lecture = @attendance.lecture
 
-    respond_to do |format|
-      if @attendance.save
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }
-        format.json { render :show, status: :created, location: @attendance }
-        format.js
-      else
-        format.html { render :new }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-        format.js
-      end
+    if @attendance.save
+      flash[:success] = "Attendance saved"
+      redirect_to "/lectures/#{@lecture.id}"
+    else
+      flash[:warning] = "Attendance wasn't saved"
+      render :new
     end
-
   end
 
   def edit
@@ -50,6 +47,15 @@ class AttendancesController < ApplicationController
         :created_at,
         :display_time
       )
+    end
+
+    def set_timezone
+      @attendance = Attendance.find_by(id: params[:id])
+      old_timezone = Time.zone
+      Time.zone = @attendance.lecture.cohort.timezone 
+      yield
+    ensure
+      Time.zone = old_timezone
     end
 
 end

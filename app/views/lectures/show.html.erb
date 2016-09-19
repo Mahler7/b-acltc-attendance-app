@@ -10,6 +10,7 @@
       <button type="button" class="btn btn-default"><%= link_to "Back", "/students" %></button>
     <% elsif current_teacher %>
       <button type="button" class="btn btn-default"><%= link_to "Back", "/cohorts/#{@lecture.cohort_id}" %></button>
+      <button type="button" class="btn btn-default"><%= link_to "New Attendance", "/attendances/new" %></button>
     <% end %>
     <button type="button" class="btn btn-default"><%= link_to "Edit Lecture", "/lectures/#{@lecture.id}/edit" %></button>
     <button type="button" class="btn btn-default"><%= link_to "Delete Lecture", "/lectures/#{@lecture.id}", method: :delete, data:{confirm: "Are you sure you want to delete this lecture?"} %></button>

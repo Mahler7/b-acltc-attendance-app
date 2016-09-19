@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/lectures/:id' => 'lectures#show'
       
       get '/lectures/:lecture_id/attendances' => 'attendances#index'
+      get '/attendances/new' => 'attendances#new'
       post '/lectures/:lecture_id/attendances' => 'attendances#create'
       get '/lectures/:lecture_id/attendances/:id' => 'attendances#show'
     end
@@ -46,6 +47,8 @@ Rails.application.routes.draw do
   patch '/lectures/:id' => 'lectures#update'
   delete '/lectures/:id' => 'lectures#destroy'
 
+  get '/attendances/new' => 'attendances#new'
+  post '/attendances' => 'attendances#create'
   get '/attendances/:id/edit' => 'attendances#edit'
   patch '/attendances/:id' => 'attendances#update'
 end

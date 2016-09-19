@@ -10,11 +10,10 @@ var attendances = new Vue({
     errors: {}
   },
   ready: function() {
-    var lecture_id = gon.lecture_id
     var that;
     that = this;
     $.ajax({
-      url: '/api/v1/lectures/' + lecture_id + '/attendances.json',
+      url: '/api/v1/lectures/' + that.lecture_id + '/attendances.json',
       success: function(res) {
         that.attendances = res;
       }
@@ -22,14 +21,13 @@ var attendances = new Vue({
   },
   methods: {
     addAttendance: function () {
-      // var lecture_id = gon.lecture_id
       var that = this;
       $.ajax({
         method: 'POST',
         data: {
           attendance: that.attendance,
         },
-        url: '/api/v1/lectures/' + this.lecture_id + '/attendances.json',
+        url: '/api/v1/lectures/' + that.lecture_id + '/attendances.json',
         success: function(res) {
           that.errors = {}
           that.attendance = {}

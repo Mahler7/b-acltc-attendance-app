@@ -58,7 +58,6 @@ class LecturesController < ApplicationController
       )
     end
 
-
     def set_timezone
       @lecture = Lecture.find_by(id: params[:id])
       old_timezone = Time.zone
