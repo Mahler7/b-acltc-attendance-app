@@ -10,19 +10,8 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(attendance_params) unless @attendance
     @lecture = @attendance.lecture
-    time_zone = @lecture.cohort.timezone
-    p "****** Attendance before update arrive ********"
-    p @attendance.arrived
-    p "***********"
-    p "****** Timezone ********"
-    p time_zone
-    p "***********"
-    @attendance.arrived = @attendance.arrived.in_time_zone(time_zone)
-
+   
     if @attendance.save
-      p "****** Attendance after update arrive ********"
-      p @attendance.arrived
-      p "***********"
       flash[:success] = "Attendance saved"
       redirect_to "/lectures/#{@lecture.id}"
     else
