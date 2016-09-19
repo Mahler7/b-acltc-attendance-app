@@ -43,7 +43,7 @@ var attendances = new Vue({
       var that = this;
       $.ajax({
         method: 'DELETE',
-        url:'/api/v1/lectures/' + that.lecture_id + '/attendances/' + that.attendance_id + '.json',
+        url:'/api/v1/lectures/' + that.lecture_id + '/attendances/' + that.attendance.id + '.json',
         success: function(res) {
           that.$remove()
         }

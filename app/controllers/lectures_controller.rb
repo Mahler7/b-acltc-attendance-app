@@ -20,6 +20,7 @@ class LecturesController < ApplicationController
   def show
     @lecture = Lecture.find_by(id: params[:id])
     @current_student_id = current_student.id if current_student
+    @attendance_id = Attendance.find_by(id: params[:id])
   end
 
   def edit

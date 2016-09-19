@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get '/lectures' => 'lectures#index'
       get '/lectures/:id' => 'lectures#show'
       
-      get '/lectures/:lecture_id/attendances' => 'attendances#index'
+      get '/attendances' => 'attendances#index'
       get '/attendances/new' => 'attendances#new'
       post '/lectures/:lecture_id/attendances' => 'attendances#create'
       get '/lectures/:lecture_id/attendances/:id' => 'attendances#show'
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/students' => 'students#dashboard'
   get '/students/sign_up' => 'students#new'
   post '/students' => 'students#create'
+  get '/students/:id' => 'students#show'
   get '/students/:id/edit' => 'students#edit'
   patch '/students/:id' => 'students#update'
   delete '/students/:id' => 'students#destroy'
