@@ -1,16 +1,28 @@
 class AttendancesController < ApplicationController
 
-  around_action :set_timezone, only: [:show, :edit, :update]
+  around_action :set_timezone, only: [:show, :new, :create, :edit, :update]
 
   def new
     @attendance = Attendance.new
+    @lecture = Lecture.find_by(id: params[:lecture_id])
   end
 
   def create
     @attendance = Attendance.new(attendance_params) unless @attendance
     @lecture = @attendance.lecture
+    time_zone = @lecture.cohort.timezone
+    p "****** Attendance before update arrive ********"
+    p @attendance.arrived
+    p "***********"
+    p "****** Timezone ********"
+    p time_zone
+    p "***********"
+    @attendance.arrived = @attendance.arrived.in_time_zone(time_zone)
 
     if @attendance.save
+      p "****** Attendance after update arrive ********"
+      p @attendance.arrived
+      p "***********"
       flash[:success] = "Attendance saved"
       redirect_to "/lectures/#{@lecture.id}"
     else
@@ -50,9 +62,9 @@ class AttendancesController < ApplicationController
     end
 
     def set_timezone
-      @attendance = Attendance.find_by(id: params[:id])
+      @lecture = Lecture.find_by(id: params[:lecture_id])
       old_timezone = Time.zone
-      Time.zone = @attendance.lecture.cohort.timezone 
+      Time.zone = @lecture.cohort.timezone 
       yield
     ensure
       Time.zone = old_timezone

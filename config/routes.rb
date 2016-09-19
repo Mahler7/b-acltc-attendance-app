@@ -47,8 +47,8 @@ Rails.application.routes.draw do
   patch '/lectures/:id' => 'lectures#update'
   delete '/lectures/:id' => 'lectures#destroy'
 
-  get '/attendances/new' => 'attendances#new'
-  post '/attendances' => 'attendances#create'
-  get '/attendances/:id/edit' => 'attendances#edit'
-  patch '/attendances/:id' => 'attendances#update'
+  get '/lectures/:lecture_id/attendances/new' => 'attendances#new'
+  post '/lectures/:lecture_id/attendances' => 'attendances#create'
+  get '/lectures/:lecture_id/attendances/:id/edit' => 'attendances#edit'
+  patch '/lectures/:lecture_id/attendances/:id' => 'attendances#update'
 end

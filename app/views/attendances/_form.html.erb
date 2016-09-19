@@ -7,8 +7,8 @@
   <%= f.collection_select :lecture_id, Lecture.all, :id, :name %>
 </div>
 <div>
-  <%= f.label :display_time, "Arrived" %>
-  <%= f.datetime_local_field  :created_at %>
+  <%= f.label :arrived, "Arrived" %>
+  <%= f.datetime_local_field  :arrived %>
 </div>
 <div>
   <%= f.label :attended, "Attended" %>

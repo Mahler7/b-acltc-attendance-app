@@ -7,7 +7,9 @@ class Api::V1::AttendancesController < ApplicationController
   def create
     @lecture = Lecture.find_by(id: params[:lecture_id])
     @attendance = Attendance.new(attendance_params)
+    
     if @attendance.save
+      @attendance.update(arrived: @attendance.created_at)
       render :show
     else
       render json: {errors: @attendance.errors.messages}, status: 422 
