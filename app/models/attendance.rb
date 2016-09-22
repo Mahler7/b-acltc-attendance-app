@@ -5,7 +5,7 @@ class Attendance < ActiveRecord::Base
   def lecture_attendance
     
     if arrived.in_time_zone(lecture.cohort.timezone).iso8601 > lecture.end_time.utc.iso8601
-      "Student didn't attend lecture"
+      "Student didn't attend class"
     elsif arrived.in_time_zone(lecture.cohort.timezone).iso8601 > lecture.start_time.utc.iso8601 && arrived.in_time_zone(lecture.cohort.timezone).iso8601 < lecture.end_time.utc.iso8601
       "Student was late to class"
     else arrived.in_time_zone(lecture.cohort.timezone).iso8601 < lecture.start_time.utc.iso8601

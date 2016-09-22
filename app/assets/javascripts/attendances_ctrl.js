@@ -40,17 +40,6 @@ var attendances = new Vue({
         }
       })
     },
-    // deleteAttendance: function() {
-    //   var that = this;
-    //   $.ajax({
-    //     method: 'DELETE',
-    //     url:'/api/v1/lectures/' + that.lecture_id + '/attendances/' + that.attendance.id + '.json',
-    //     success: function(res) {
-    //       that.$remove()
-    //     }
-    //   })
-    // },
-
     deleteAttendance: function(attendance) {
       var that = this;
       $.ajax({

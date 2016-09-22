@@ -1,0 +1,23 @@
+<h1><%= @student.friendly_name %>'s Attendance Profile</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lecture</th>
+      <th>Start Time</th>
+      <th>Time Checked In</th>
+      <th>Attendance Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @student.attendances.each do |attendance| %>
+    <tr>
+      <td><%= attendance.lecture.name %></td>
+      <td><%= attendance.lecture.friendly_start_time %></td>
+      <td><%= attendance.display_time %></td>
+      <td><%= attendance.lecture_attendance %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
