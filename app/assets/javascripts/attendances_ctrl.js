@@ -3,6 +3,7 @@ var attendances = new Vue({
   data: {
     attendances: [],
     attendance: {
+      id: '',
       attended: '',
       student_id: '',
       lecture_id: ''
@@ -38,6 +39,30 @@ var attendances = new Vue({
           that.errors = res.responseJSON.errors
         }
       })
+    },
+    // deleteAttendance: function() {
+    //   var that = this;
+    //   $.ajax({
+    //     method: 'DELETE',
+    //     url:'/api/v1/lectures/' + that.lecture_id + '/attendances/' + that.attendance.id + '.json',
+    //     success: function(res) {
+    //       that.$remove()
+    //     }
+    //   })
+    // },
+
+    deleteAttendance: function(attendance) {
+      var that = this;
+      $.ajax({
+        url: '/api/v1/lectures/' + that.lecture_id + '/attendances/' + attendance.id + '.json',
+        type: "DELETE"
+      }).done(function(response) {
+        console.log("that.attendances = " + that.attendances)
+        console.log("that.attendance = " + that.attendance)
+        that.attendances = that.attendances.filter(function(a){
+          return a.id !== attendance.id
+        });
+      }.bind(that));
     },
   }
 });

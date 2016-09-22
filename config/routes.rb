@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get '/attendances/new' => 'attendances#new'
       post '/lectures/:lecture_id/attendances' => 'attendances#create'
       get '/lectures/:lecture_id/attendances/:id' => 'attendances#show'
+      delete '/lectures/:lecture_id/attendances/:id' => 'attendances#destroy'
     end
   end
   get '/teachers/login' => 'sessions#new_teacher'

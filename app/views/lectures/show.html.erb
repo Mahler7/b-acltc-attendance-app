@@ -5,6 +5,18 @@
   <p>Start Time: <%= @lecture.friendly_start_time %></p>
   <p>End Time: <%= @lecture.friendly_end_time %></p>
   <p>Notes: <%= @lecture.notes %></p>
+  
+  <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
+  <% unless @lecture.students.include?(current_student) || current_teacher %>
+    <div class="attendances-checkbox">
+      <label class="student-attendance-checkbox">Attended</label>
+      <input type="checkbox" v-model="attendance.attended"></input>
+      <input type="hidden" v-model="attendance.lecture_id" value="<%= @lecture.id %>">
+      <input type="hidden" v-model="attendance.student_id" value="<%= @current_student_id %>">
+      <button v-on:click="addAttendance">Attended</button>
+    </div>
+  <% end %>
+
   <div>
     <% if current_student %>
       <button type="button" class="btn btn-default"><%= link_to "Back", "/students" %></button>
@@ -15,6 +27,7 @@
     <button type="button" class="btn btn-default"><%= link_to "Edit Lecture", "/lectures/#{@lecture.id}/edit" %></button>
     <button type="button" class="btn btn-default"><%= link_to "Delete Lecture", "/lectures/#{@lecture.id}", method: :delete, data:{confirm: "Are you sure you want to delete this lecture?"} %></button>
   </div>
+
   <table>
     <thead>
       <tr>
@@ -25,21 +38,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="attendance in attendances" v-show="attendance.attended" >
+      <tr v-for="attendance in attendances" v-show="attendance.attended" id="students-attended-list">
         <td>{{ attendance.student_name }}</td>
         <td>{{ attendance.display_time }}</td>
         <td>{{ attendance.lecture_attendance }}</td>
-        <td><%= link_to "Edit", "/lectures/{{ attendance.lecture_id }}/attendances/{{attendance.id}}/edit" %></td>
+        <% if current_teacher %>
+          <td><td><button type="button" class="btn btn-default btn-xs"><%= link_to "Edit", "/lectures/{{ attendance.lecture_id }}/attendances/{{attendance.id}}/edit" %></button></td>
+          <td><button type="button" class="btn btn-default btn-xs" v-on:click="deleteAttendance(attendance)">Delete</button></td>
+        <% end %>
       </tr>
-      <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
-      <% unless @lecture.students.include?(current_student) || current_teacher %>
-        <tr class="attendances-checkbox">
-          <td><input type="checkbox" v-model="attendance.attended"></td>
-          <td><input type="hidden" v-model="attendance.lecture_id" value="<%= @lecture.id %>"></td>
-          <td><input type="hidden" v-model="attendance.student_id" value="<%= @current_student_id %>"></td>
-          <td><button v-on:click="addAttendance">Attended</button></td>
-        </tr>
-      <% end %>
     </tbody>
   </table>
 </div>
