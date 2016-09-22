@@ -57,8 +57,6 @@ var attendances = new Vue({
         url: '/api/v1/lectures/' + that.lecture_id + '/attendances/' + attendance.id + '.json',
         type: "DELETE"
       }).done(function(response) {
-        console.log("that.attendances = " + that.attendances)
-        console.log("that.attendance = " + that.attendance)
         that.attendances = that.attendances.filter(function(a){
           return a.id !== attendance.id
         });
