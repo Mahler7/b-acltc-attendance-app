@@ -3,6 +3,8 @@ class Cohort < ActiveRecord::Base
   has_many :students
   has_many :lectures
 
+  validates :name, :start_date, :end_date, :timezone, presence: true
+
   def friendly_start_date
     start_date.strftime("%D")
   end

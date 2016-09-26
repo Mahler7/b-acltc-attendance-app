@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
 
+  before_action :authenticate_teacher!
+
   def new
     @cohort = Cohort.new
     @teacher = Teacher.find(current_teacher)
