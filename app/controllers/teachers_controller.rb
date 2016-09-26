@@ -1,5 +1,7 @@
 class TeachersController < ApplicationController
 
+  before_action :authenticate_teacher!, except: [:new, :create]
+
   def dashboard
     @teacher = Teacher.find(current_teacher)
   end

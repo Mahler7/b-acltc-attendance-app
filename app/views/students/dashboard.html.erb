@@ -1,8 +1,8 @@
 <h1>Students Dashboard</h1>
 <h3><%= @student.friendly_name %></h3>
-<p><%= @student.email %></p>
-<p><%= @student.phone %></p>
-<p><%= @student.user_type %></p>
+<p>Email: <%= @student.email %></p>
+<p>Phone: <%= @student.phone %></p>
+<p>Cohort: <%= @student.cohort.name %></p>
 
 <div>
   <p><%= link_to "Edit Profile", "/students/#{@student.id}/edit", class: "btn btn-default" %></p>

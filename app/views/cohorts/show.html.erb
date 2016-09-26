@@ -1,6 +1,6 @@
 <h1><%= @cohort.name %></h1>
-<p>Start Date: <%= @cohort.start_date %></p>
-<p>End Date: <%= @cohort.end_date %></p>
+<p>Start Date: <%= @cohort.friendly_start_date %></p>
+<p>End Date: <%= @cohort.friendly_end_date %></p>
 
 <div>
   <%= link_to "Back", "/teachers", class: "btn btn-default" %>
