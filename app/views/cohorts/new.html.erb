@@ -4,6 +4,6 @@
   <%= render partial: "form", locals: {f: f} %>
 
   <%= submit_tag "Submit", class: "btn btn-default" %>
-  <button type="button" class="btn btn-default"><%= link_to "Back", "/teachers" %></button>
+  <%= link_to "Back", "/teachers", class: "btn btn-default" %></button>
 
 <% end %>

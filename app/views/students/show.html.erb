@@ -1,5 +1,12 @@
 <h1><%= @student.friendly_name %>'s Attendance Profile</h1>
 
+<% if current_teacher %>
+  <%= link_to 'New Attendance', '/attendances/new', class: "btn btn-default" %>
+  <%= link_to 'Back', "/cohorts/#{@student.cohort_id}", class: "btn btn-default" %>
+<% elsif current_student %>
+  <%= link_to 'Back', "/students", class: "btn btn-default" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -16,6 +23,10 @@
       <td><%= attendance.lecture.friendly_start_time %></td>
       <td><%= attendance.display_time %></td>
       <td><%= attendance.lecture_attendance %></td>
+      <% if current_teacher %>
+        <td><td><button type="button" class="btn btn-default btn-xs"><%= link_to "Edit", "/lectures/#{attendance.lecture_id}/attendances/#{attendance.id}/edit" %></button></td>
+        <td><button type="button" class="btn btn-default btn-xs" v-on:click="deleteAttendance(attendance)">Delete</button></td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

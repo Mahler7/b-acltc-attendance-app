@@ -10,8 +10,10 @@
 
 <% if current_teacher %>
   Signed in as <%= current_teacher.first_name %> | <%= link_to "Logout", '/teachers/logout' %>
+<% elsif current_student %>
+  Signed in as <%= current_student.first_name %> | <%= link_to "Logout", '/students/logout' %>
 <% else %>
-  <%= link_to 'Login', '/teachers/login' %> | <%= link_to 'Signup', '/teachers/sign_up' %>
+  <%= link_to 'Sign Up', '/' %> | <%= link_to 'Signup', '/teachers/sign_up' %>
 <% end %>
 
 <% flash.each do |name, message| %>

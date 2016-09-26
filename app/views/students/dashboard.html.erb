@@ -5,7 +5,7 @@
 <p><%= @student.user_type %></p>
 
 <div>
-  <p><%= link_to "Edit Profile", "/students/#{@student.id}/edit" %></p>
+  <p><%= link_to "Edit Profile", "/students/#{@student.id}/edit", class: "btn btn-default" %></p>
 </div>
 
 <h2>Lectures</h2>
@@ -14,3 +14,5 @@
     <%= link_to lecture.name, "/lectures/#{lecture.id}" %>
   </p>
 <% end %>
+
+<%= link_to 'View Attendance Profile', "/students/#{current_student.id}", class: "btn btn-default" %>
