@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   get '/teachers/login' => 'sessions#new_teacher'
   post '/teachers/login' => 'sessions#create_teacher'
   get '/teachers/logout' => 'sessions#destroy_teacher'
-  get '/students/login' => 'sessions#new_student'
-  post '/students/login' => 'sessions#create_student'
-  get '/students/logout' => 'sessions#destroy_student'
   
   get '/teachers' => 'teachers#dashboard'
   get '/teachers/sign_up' => 'teachers#new'
@@ -27,8 +24,7 @@ Rails.application.routes.draw do
   patch '/teachers/:id' => 'teachers#update'
   delete '/teachers/:id' => 'teachers#destroy'
 
-  get '/students' => 'students#dashboard'
-  get '/students/sign_up' => 'students#new'
+  get '/students/new' => 'students#new'
   post '/students' => 'students#create'
   get '/students/:id' => 'students#show'
   get '/students/:id/edit' => 'students#edit'

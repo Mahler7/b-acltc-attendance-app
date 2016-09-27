@@ -1,9 +1,6 @@
 class LecturesController < ApplicationController
   
-  
-  
-  before_action :authenticate_teacher_and_student!, only: [:show]
-  before_action :authenticate_teacher!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_teacher!
   around_action :set_timezone, only: [:show]
   
   def new

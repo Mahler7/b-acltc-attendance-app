@@ -1,6 +1,6 @@
 class Api::V1::LecturesController < ApplicationController
   
-  before_action :authenticate_teacher_and_student!
+  before_action :authenticate_teacher!
 
   def index
     @lectures = Lecture.all

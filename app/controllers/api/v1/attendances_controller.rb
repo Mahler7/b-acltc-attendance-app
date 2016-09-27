@@ -1,7 +1,6 @@
 class Api::V1::AttendancesController < ApplicationController
   
-  before_action :authenticate_teacher!, only: [:destroy]
-  before_action :authenticate_student!, only: [:create]
+  before_action :authenticate_teacher!
   before_action :authenticate_teacher_and_student!, only: [:index, :show]
 
   def index

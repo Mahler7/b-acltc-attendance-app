@@ -6,6 +6,10 @@
   <p>End Time: <%= @lecture.friendly_end_time %></p>
   <p>Notes: <%= @lecture.notes %></p>
   
+  <%= @lecture.students.each do |student| %>
+    
+  <% end %>
+
   <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
   <% unless @lecture.students.include?(current_student) || current_teacher %>
     <div class="attendances-checkbox">
@@ -18,14 +22,10 @@
   <% end %>
 
   <div>
-    <% if current_student %>
-      <%= link_to "Back", "/students", class: "btn btn-default" %>
-    <% elsif current_teacher %>
-      <%= link_to "Back", "/cohorts/#{@lecture.cohort_id}", class: "btn btn-default" %>
-      <%= link_to "New Attendance", "/lectures/#{@lecture.id}/attendances/new", class: "btn btn-default" %>
-      <%= link_to "Edit Lecture", "/lectures/#{@lecture.id}/edit", class: "btn btn-default" %>
-      <%= link_to "Delete Lecture", "/lectures/#{@lecture.id}", method: :delete, data:{confirm: "Are you sure you want to delete this lecture?"}, class: "btn btn-default" %>
-    <% end %>
+    <%= link_to "Back", "/cohorts/#{@lecture.cohort_id}", class: "btn btn-default" %>
+    <%= link_to "New Attendance", "/lectures/#{@lecture.id}/attendances/new", class: "btn btn-default" %>
+    <%= link_to "Edit Lecture", "/lectures/#{@lecture.id}/edit", class: "btn btn-default" %>
+    <%= link_to "Delete Lecture", "/lectures/#{@lecture.id}", method: :delete, data:{confirm: "Are you sure you want to delete this lecture?"}, class: "btn btn-default" %>
   </div>
 
   <table>
