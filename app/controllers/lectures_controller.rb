@@ -1,5 +1,11 @@
 class LecturesController < ApplicationController
+  
+  
+  
+  before_action :authenticate_teacher_and_student!, only: [:show]
+  before_action :authenticate_teacher!, only: [:new, :create, :edit, :update, :destroy]
   around_action :set_timezone, only: [:show]
+  
   def new
     @lecture = Lecture.new
     @cohort = Cohort.find_by(id: params[:id])
