@@ -40,6 +40,25 @@ var attendances = new Vue({
         }
       })
     },
+    updateAttendance: function(attendance){
+      var that = this;
+      $.ajax({
+        method: 'PATCH',
+        data: {
+          attendance: that.attendance,
+        },
+        url: '/api/v1/lectures/' + that.lecture_id + '/attendances/' + attendance.id + '.json',
+        success: function(res) {
+          that.errors = {}
+          that.attendance = {}
+          that.attendances.push(res);
+          $('.attendances-checkbox').hide();
+        },
+        error: function(res) {
+          that.errors = res.responseJSON.errors
+        }
+      })
+    },
     deleteAttendance: function(attendance) {
       var that = this;
       $.ajax({

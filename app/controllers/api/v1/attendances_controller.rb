@@ -23,6 +23,18 @@ class Api::V1::AttendancesController < ApplicationController
     @attendance = Attendance.find_by(id: params[:id])
   end
 
+  def update
+    @attendance = Attendance.find_by(id: params[:id])
+    
+    if @attendance.update(attendance_params)
+      # @attendance.update(arrived: @attendance.created_at)
+      render :show
+    else
+      render json: {errors: @attendance.errors.messages}, status: 422 
+    end
+
+  end
+
   def destroy
     @attendance = Attendance.find_by(id: params[:id])
     # @lecture_id = Attendance.find_by(id: params[:lecture_id])
@@ -35,11 +47,10 @@ class Api::V1::AttendancesController < ApplicationController
 
     def attendance_params
       params.require(:attendance).permit(
+        :arrived,
         :attended,
         :lecture_id,
-        :student_id,
-        :display_time,
-        :created_at
+        :student_id
       )
     end
 end

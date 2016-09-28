@@ -9,5 +9,7 @@ json.arrived attendance.arrived
 if attendance.student
   json.student_name attendance.student.friendly_name
 end
-json.lecture_attendance attendance.lecture_attendance
-json.display_time attendance.display_time
+if attendance.arrived.present?
+  json.lecture_attendance attendance.lecture_attendance
+  json.display_time attendance.display_time
+end
