@@ -1,5 +1,4 @@
 class LecturesController < ApplicationController
-  
   before_action :authenticate_teacher!
   around_action :set_timezone, only: [:show]
   
@@ -22,7 +21,6 @@ class LecturesController < ApplicationController
 
   def show
     @lecture = Lecture.find_by(id: params[:id])
-    @current_student_id = current_student.id if current_student
   end
 
   def edit

@@ -1,5 +1,4 @@
 class AttendancesController < ApplicationController
-
   before_action :authenticate_teacher!
   around_action :set_timezone, only: [:show, :new, :create, :edit, :update]
 

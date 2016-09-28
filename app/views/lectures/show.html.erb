@@ -6,20 +6,18 @@
   <p>End Time: <%= @lecture.friendly_end_time %></p>
   <p>Notes: <%= @lecture.notes %></p>
   
-  <%= @lecture.students.each do |student| %>
-    
-  <% end %>
-
-  <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
-  <% unless @lecture.students.include?(current_student) || current_teacher %>
+  <% @lecture.cohort.students.each do |student| %>
+    <%= student.friendly_name %>
     <div class="attendances-checkbox">
+      <input type="hidden" v-model="lecture_id" value="<%= @lecture.id %>"/>
       <label class="student-attendance-checkbox">Attended</label>
-      <input type="checkbox" v-model="attendance.attended"></input>
+      <input type="checkbox" v-model="attendance.attended">
       <input type="hidden" v-model="attendance.lecture_id" value="<%= @lecture.id %>">
-      <input type="hidden" v-model="attendance.student_id" value="<%= @current_student_id %>">
+      <input type="hidden" v-model="attendance.student_id" value="<%= student.id %>">
       <button v-on:click="addAttendance">Attended</button>
     </div>
   <% end %>
+
 
   <div>
     <%= link_to "Back", "/cohorts/#{@lecture.cohort_id}", class: "btn btn-default" %>

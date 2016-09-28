@@ -1,7 +1,5 @@
 class Api::V1::AttendancesController < ApplicationController
-  
   before_action :authenticate_teacher!
-  before_action :authenticate_teacher_and_student!, only: [:index, :show]
 
   def index
     @lecture = Lecture.find_by(id: params[:lecture_id])
